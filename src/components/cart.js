@@ -1,16 +1,18 @@
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import { CartContext } from "../CartContext";
 import Cartlist from "./Cartlist";
 
-export default function Cart() {
-  const [Cart, ] = useContext(CartContext);
+function Cart() {
+  const [ Cart, ] = useContext(CartContext);
 
-  //  const totalPrice = Cart.reduce((acc, curr)=> acc + curr.price, 0)
+//CALCULATE TOTAL OF SUBTOTAL -- DOESN'T WORK AS IT SHOULD THOUGH LOL
+
+ let totalPrice = Cart.reduce((acc, curr)=> acc + curr.subtotal, 0)
 
   return (
     <div className="cart-page">
       <div className="cart-page-heading">
-        <h2>Shopping Cart - {Cart.length} Items</h2>
+        <h2>Shopping Cart</h2>
         <div className="heading-dash"></div>
       </div>
       <div className="cart-list">
@@ -26,7 +28,7 @@ export default function Cart() {
           <h5>Qty</h5>
           <h5>Unit Price</h5>
           <h5>Subtotal</h5>
-          <h5>Delete</h5>
+          <h5>Del</h5>
         </div>
         {Cart.map((c, index) => (
           <Cartlist
@@ -36,18 +38,20 @@ export default function Cart() {
             quantity={c.quantity}
             index={index}
             src={c.src}
+            subtotal={c.subtotal}
+            id={c.id}
           />
         ))}
       </div>
-      {/* <div
+      <div
         className={
           Cart.length > 0 ? "cart-footer" : "cart-footer cart-footer-none"
         }
       >
-        <h5></h5>
-        <h5></h5>
-        <h5></h5>
-        <h5></h5>
+        <h5>{''}</h5>
+        <h5>{''}</h5>
+        <h5>{''}</h5>
+        <h5>{''}</h5>
         <h5
           style={{
             borderTop: "1px solid hsl(12, 88%, 59%)",
@@ -57,7 +61,10 @@ export default function Cart() {
         >
           TOTAL: <br /> {totalPrice}
         </h5>
-      </div> */}
+        <h5>{''}</h5>
+      </div>
     </div>
   );
 }
+
+export default Cart;

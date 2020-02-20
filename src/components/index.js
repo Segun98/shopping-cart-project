@@ -2,67 +2,74 @@ import React from "react";
 import Productslist from "./Productslist";
 
 export default function Index() {
+
+  // PRODUCTS ARRAY
   const Products = [
     {
+      id: 0,
       quantity: 1,
       src: "/images/product_2.png",
       name: "Product One",
-      price: "100000"
+      price: 62850,
+      subtotal: 62850
     },
     {
+      id: 1,
       quantity: 1,
       src: "/images/product_4.png",
       name: "Product Two",
-      price: "10000"
+      price: 28000,
+      subtotal: 28000
     },
     {
+      id: 2,
       quantity: 1,
       src: "/images/product_5.png",
       name: "Product Three",
-      price: "190000"
+      price: 192000,
+      subtotal: 192000
     },
     {
+      id: 3,
       quantity: 1,
       src: "/images/product_1.png",
       name: "Product Four",
-      price: "120000"
+      price: 124500,
+      subtotal: 124500
     },
     {
+      id: 4,
       quantity: 1,
       src: "/images/product_3.png",
       name: "Product Five",
-      price: "155000"
+      price: 155000,
+      subtotal: 155000
     },
     {
+      id: 5,
       quantity: 1,
       src: "/images/product_6.png",
       name: "Product Six",
-      price: "200000"
+      price: 280000 ,
+      subtotal: 280000
     },
     {
+      id: 6,
       quantity: 1,
       src: "/images/product_8.png",
       name: "Product Seven",
-      price: "220000"
+      price: 227650,
+      subtotal: 227600
     },
     {
+      id: 7,
       quantity: 1,
       src: "/images/product_7.png",
       name: "Product Eight",
-      price: "175000"
+      price: 175000,
+      subtotal: 175000
     }
   ];
-//   const [Popup, setPopup] = useState(true);
-// <div className="popup">
-//     <div className="popup-wrap">
-//             <div className="popup-text">
-//               <p>{Popup? `${name} has been added to cart` : ''}</p>
-//             </div>
-//             <button>X</button>
-//           </div>
-//         </div>
-//         setPopup(prevState => !prevState);
-//         // Modal(name)
 
   return (
     <div className="index">
@@ -74,12 +81,14 @@ export default function Index() {
         <div className="products-wrap">
           {Products.map((product, index) => (
             <Productslist
-              src={product.src}
               key={index}
+              src={product.src}
               index={index}
               name={product.name}
               price={product.price}
               quantity={product.quantity}
+              subtotal={product.subtotal}
+              id={product.id}
             />
           ))}
         </div>
